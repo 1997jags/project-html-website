@@ -14,15 +14,28 @@ pipeline {
       }
     }
     stage("remove defaults") {
-        sh 'sudo rm -rf /usr/share/nginx/html/ '
+        steps {
+            script {
+            sh 'sudo rm -rf /usr/share/nginx/html/ '
+            }
+        }
     }
     stage("copy-test") {
+        steps{
+            script {
         sh 'sudo cp -r /var/lib/jenkins/workspace/multi_branch_test/* /usr/share/nginx/html/'
         sh 'sudo service nginx start'
+        }
+      }
     }
     stage("copy-master") {
+        steps {
+            stage {
+                script {
         sh 'sudo cp -r /var/lib/jenkins/workspace/multi_branch_master/* /usr/share/nginx/html/'
         sh 'sudo service nginx start'
+        }
+     }
     }
 
   }
