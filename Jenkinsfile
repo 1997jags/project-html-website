@@ -30,7 +30,6 @@ pipeline {
     }
     stage("copy-master") {
         steps {
-            stage {
                 script {
         sh 'sudo cp -r /var/lib/jenkins/workspace/multi_branch_master/* /usr/share/nginx/html/'
         sh 'sudo service nginx start'
