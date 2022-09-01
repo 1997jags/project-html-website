@@ -35,7 +35,7 @@ pipeline {
     }
     stage("copy-master") {
         when {
-            expression { env.BRANCH_NAME == "test"}
+            expression { env.BRANCH_NAME == "master"}
         }
         steps {
                 script {
