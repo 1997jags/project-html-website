@@ -9,7 +9,9 @@ pipeline {
       {
         script
         {
-          sh 'sudo yum install nginx -y && sudo service nginx start'
+            sh 'sudo yum install epel-release -y'
+          sh 'sudo yum install nginx -y'
+          sh 'sudo service nginx start'
         }
       }
     }
