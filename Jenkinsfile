@@ -23,6 +23,9 @@ pipeline {
         }
     }
     stage("copy-test") {
+        when {
+            expression { env.BRANCH_NAME == "test"}
+        }
         steps{
             script {
         sh 'sudo cp -r /var/lib/jenkins/workspace/multi_branch_test/* /usr/share/nginx/html/'
@@ -31,6 +34,9 @@ pipeline {
       }
     }
     stage("copy-master") {
+        when {
+            expression { env.BRANCH_NAME == "test"}
+        }
         steps {
                 script {
         sh 'sudo cp -r /var/lib/jenkins/workspace/multi_branch_master/* /usr/share/nginx/html/'
