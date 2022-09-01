@@ -18,7 +18,7 @@ pipeline {
     stage("remove defaults") {
         steps {
             script {
-            sh 'sudo rm -rf /usr/share/nginx/html/ '
+            sh 'sudo rm -rf /usr/share/nginx/html/*'
             }
         }
     }
